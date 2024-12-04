@@ -1,0 +1,230 @@
+@font-face {
+  font-family: "GmarketSansLight";
+  src: url("https://fastly.jsdelivr.net/gh/projectnoonnu/noonfonts_2001@1.1/GmarketSansLight.woff")
+    format("woff");
+  font-weight: 100;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "SF_HambakSnow";
+  src: url("https://fastly.jsdelivr.net/gh/projectnoonnu/noonfonts_2106@1.1/SF_HambakSnow.woff")
+    format("woff");
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "GmarketSansMedium";
+  src: url("https://fastly.jsdelivr.net/gh/projectnoonnu/noonfonts_2001@1.1/GmarketSansMedium.woff")
+    format("woff");
+  font-weight: 300;
+  font-style: normal;
+}
+
+* {
+  font-family: "GmarketSansMedium";
+}
+
+/* 밤하늘 배경 */
+#container {
+  position: fixed;
+  width: 100vw;
+  height: 100vh;
+  overflow: hidden;
+  z-index: 0;
+}
+
+#pixie {
+  position: absolute;
+  width: 100%;
+  height: 60%;
+  z-index: 1;
+}
+
+/* 배경 이미지 */
+.background {
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: -1;
+  width: 100vw;
+  height: 100vh;
+}
+
+/* 제목 스타일 */
+.tittle {
+  font-family: "SF_HambakSnow";
+  position: absolute;
+  top: 70px;
+  font-size: 3.8rem;
+  color: #fffcc1;
+  left: 50%;
+  transform: translateX(-50%);
+  text-align: center;
+  letter-spacing: 8px;
+}
+
+/* 부제목 스타일 */
+.subtitle {
+  position: absolute;
+  top: 30px;
+  font-size: 1rem;
+  color: #fffcc1;
+  left: 50%;
+  transform: translateX(-50%);
+  text-align: center;
+  letter-spacing: 1px;
+  white-space: nowrap;
+}
+
+.line {
+  position: absolute;
+  top: 150px;
+  left: 24%;
+}
+
+.letter {
+  position: absolute;
+  top: 60px;
+  left: 5%;
+  width: 6vw;
+  height: auto;
+}
+
+/* 날짜 스타일 */
+.date {
+  position: absolute;
+  top: 200px;
+  font-size: 1.5rem;
+  color: #e1def3;
+  left: 50%;
+  transform: translateX(-50%);
+  text-align: center;
+  line-height: 2;
+  letter-spacing: 3px;
+}
+.date .light {
+  font-family: "GmarketSansLight";
+}
+
+.Daegu {
+  position: absolute;
+  bottom: 3%;
+  right: 16%;
+  width: 10vw;
+  height: auto;
+}
+
+.Culture {
+  position: absolute;
+  bottom: 3%;
+  right: 3%;
+  width: 12vw;
+  height: auto;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  overflow: hidden; /* 화면 밖으로 나가는 풍등 숨김 */
+  height: 100vh;
+}
+
+.sky {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+}
+
+/* 위로 올라가는 풍등 스타일 */
+.lantern {
+  position: absolute;
+  bottom: 0;
+  animation: floatUp linear infinite;
+  will-change: transform, opacity;
+}
+
+/* 흔들리는 풍등 스타일 */
+.swinging-lantern {
+  position: absolute;
+  animation: swing 3s ease-in-out infinite; /* 좌우로 흔들리는 애니메이션 적용 (속도 조금 빠르게) */
+  transform-origin: 50% 100%; /* 아래쪽 중심을 기준으로 흔들리도록 설정 */
+  z-index: 2; /* 필요에 따라 z-index 설정 */
+}
+
+/* 블러 처리된 풍등 스타일 */
+.blurred-lantern {
+  position: absolute;
+  filter: blur(3px); /* 블러 효과 추가 */
+  opacity: 0.7; /* 약간 흐릿하게 */
+  animation: floatUpBlurred linear infinite; /* 애니메이션 바로 시작 */
+}
+
+/* 블러 처리된 풍등이 위로 올라가는 애니메이션 정의 */
+@keyframes floatUpBlurred {
+  0% {
+    transform: translateY(0);
+    opacity: 0.7;
+  }
+  100% {
+    transform: translateY(-120vh);
+    opacity: 0; /* 점점 사라지게 */
+  }
+}
+
+/* 블러 처리된 풍등이 위로 올라가는 애니메이션 정의 */
+@keyframes floatUpBlurred {
+  0% {
+    transform: translateY(0);
+    opacity: 0.7;
+  }
+  100% {
+    transform: translateY(-120vh);
+    opacity: 0; /* 점점 사라지게 */
+  }
+}
+
+/* 풍등이 위로 날아가는 애니메이션 정의 */
+@keyframes floatUp {
+  0% {
+    transform: translateY(0);
+    opacity: 1;
+  }
+  100% {
+    transform: translateY(-120vh);
+    opacity: 0; /* 점점 사라지게 */
+  }
+}
+
+/* 클릭된 풍등이 위로 날아가는 애니메이션 정의 */
+@keyframes floatUpClicked {
+  0% {
+    transform: translateY(0);
+    opacity: 1;
+  }
+  100% {
+    transform: translateY(-120vh);
+    opacity: 0;
+  }
+}
+
+/* 흔들리는 애니메이션 정의 */
+@keyframes swing {
+  0% {
+    transform: rotate(0deg);
+  }
+  25% {
+    transform: rotate(5deg); /* 흔들리는 각도 증가 */
+  }
+  50% {
+    transform: rotate(0deg);
+  }
+  75% {
+    transform: rotate(-5deg); /* 흔들리는 각도 증가 */
+  }
+  100% {
+    transform: rotate(0deg);
+  }
+}
